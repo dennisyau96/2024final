@@ -13,11 +13,12 @@ import lombok.*;
 @Getter
 @Setter
 public class Seat {
-    private String seatNumber;
-    private boolean occupied = false;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String seatNumber;
+    private boolean occupied = false;
+
 
 
 }

@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,14 +33,113 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
-<body>
-<div>
-    <h1 class="text-yellow">Seat Reservation System</h1>
-    <table>
-        <thead></thead>
-        <tbody></tbody>
-    </table>
+<body class="bg-emerald-500">
+<div class="container">
+    <h1 class="text-warning text-center text-xl">Seat Reservation System</h1>
+    <div class="card-body">
+        <table class="table bordered ">
+            <thead>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1A</td>
+                <td>1B</td>
+                <td>1C</td>
+                <td>1D</td>
+                <td>1E</td>
+            </tr>
+            <tr>
+                <td>2A</td>
+                <td>2B</td>
+                <td>2C</td>
+                <td>2D</td>
+                <td>2E</td>
+            </tr>
+            <tr>
+                <td>3A</td>
+                <td>3B</td>
+                <td>3C</td>
+                <td>3D</td>
+                <td>3E</td>
+            </tr>
+            <tr>
+                <td>4A</td>
+                <td>4B</td>
+                <td>4C</td>
+                <td>4D</td>
+                <td>4E</td>
+            </tr>
+            <tr>
+                <td>5A</td>
+                <td>5B</td>
+                <td>5C</td>
+                <td>5D</td>
+                <td>5E</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="text-warning text-center text-xl">There are <span></span> seats remaining</h1>
+    </div>
+
+    <!--    <div>-->
+    <!--        <form method="post" th:action="@{save}">-->
+    <!--            <div>-->
+    <!--                <label>Name</label>-->
+    <!--                <input class="form-control" type="text" name="name"-->
+    <!--                       th:value="${reservation.seatNumber}">-->
+    <!--                <span th:errors="${reservation.seatNumber}"></span>-->
+    <!--            </div>-->
+    <!--            <div>-->
+    <!--                <label>Date of Birth</label>-->
+    <!--                <input class="form-control" type="date" name="dob"-->
+    <!--                       th:value="${reservation.name}">-->
+    <!--                <span th:errors="${reservation.name}"></span>-->
+    <!--            </div>-->
+    <!--            <div>-->
+    <!--                <label>Passed</label>-->
+    <!--                <input type="checkbox" name="passed" th:checked="${reservation.date}">-->
+    <!--                <span th:errors="${reservation.date}"></span>-->
+    <!--            </div>-->
+
+    <!--            <button type="submit" class="btn-primary" th:href="@{/index}" >Save</button>-->
+    <!--        </form>-->
+    <!--    </div>-->
+
 </div>
-<div></div>
+<div id="booking display" class="bg-gray-800 bottom-0">
+    <table class="table text-white">
+        <thead>
+        <th>Transaction Code</th>
+        <th>Date</th>
+        <th>Seat Number</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
 </body>
 </html>
