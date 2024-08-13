@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.List;
 
@@ -23,6 +24,19 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
     static int num = 0;
 
+
+//    @GetMapping(path="/index")
+//    public String reservations(Model model, @RequestParam(name="keyword",defaultValue = "") String keyword){
+////
+//        List<Reservation> reservations;
+//        if (keyword.isEmpty()) {
+//            reservations = reservationRepository.findAll();
+//        } else {
+//            long key = Long.parseLong(keyword);
+//            reservations = reservationRepository.findReservationByIdById(key);
+//        }
+//        model.addAttribute("listReservation", reservations);
+//        return "homePage";}
 
 
     @GetMapping("/index")
@@ -38,17 +52,17 @@ public class ReservationController {
         return "redirect:/index";
     }
 
-    @GetMapping("/formReservation")
-    public String formReservation(Model model) {
-        model.addAttribute("reservation", new Reservation());
-        return "homePage";
-    }
+//    @GetMapping("/formReservations")
+//    public String formReservation(Model model) {
+//        model.addAttribute("reservation", new Reservation());
+//        return "formReservations";
+//    }
 
     @PostMapping(path="/save")
     public String save(Model model, Reservation reservation, BindingResult
             bindingResult, ModelMap mm, HttpSession session) {
         if (bindingResult.hasErrors()) {
-            return "formReservation";
+            return "homePage";
         } else {
             reservationRepository.save(reservation);
             if (num == 2) {
@@ -66,12 +80,11 @@ public class ReservationController {
     public String editReservation(Model model, Long id, HttpSession session){
         num = 2;
         session.setAttribute("info", 0);
-        Reservation r = reservationRepository.findById(id).orElse(null);
-        if(r==null) throw new RuntimeException("Patient does not exist");
-        model.addAttribute("reservation", r);
+        Reservation reservation = reservationRepository.findById(id).orElse(null);
+        if(reservation==null) throw new RuntimeException("Reservation does not exist");
+        model.addAttribute("reservation", reservation);
         return "editReservation";
     }
-
 
 
 

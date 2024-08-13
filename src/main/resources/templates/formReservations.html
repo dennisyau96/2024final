@@ -18,33 +18,33 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-
+<section layout:fragment="content">
     <div class="col-md-6 offset-3">
         <form method="post" th:action="@{save}">
             <div>
                 <label>Transaction Number</label>
-                <input class="form-control" type="text" name="id" th:value="${reservation.id}">
+                <input class="form-control" type="text"
+                       th:value="${reservation.id}">
                 <span th:errors="${reservation.id}"></span>
             </div>
             <div>
                 <label>Date of Transaction</label>
-                <input class="form-control" type="date" name="date"
+                <input class="form-control" type="date"
                        th:value="${reservation.date}">
                 <span th:errors="${reservation.date}"></span>
             </div>
             <div>
                 <label>Seat Number</label>
-                <input class="form-control" type="text" name="seatNumber"
-                       th:value="${reservation.seatNumber}">
+                <input type="text"  th:checked="${reservation.seatNumber}">
                 <span th:errors="${reservation.seatNumber}"></span>
             </div>
             <div>
                 <label>Name</label>
-                <input type="checkbox" name="passed" th:checked="${reservation.name}">
-                <span th:errors="${reservation.passed}"></span>
+                <input class="form-control" type="text"
+                       th:value="${reservation.name}">
+                <span th:errors="${reservation.name}"></span>
             </div>
-
-            <button type="submit" class="btn-primary" th:href="@{/index}">Save</button>
+            <button type="submit" class="btn-primary" th:href="@{/index}" >Save</button>
         </form>
     </div>
 </section>

@@ -40,8 +40,8 @@
         }
     </script>
     <style>
-        .pre-scrollable{
-            height:500px;
+        .pre-scrollable {
+            height: 500px;
             overflow-y: scroll;
         }
     </style>
@@ -103,40 +103,44 @@
             </tbody>
         </table>
     </div>
-
+<!--    <a class="btn btn-primary" th:href="@{/formReservations}">Add Reservation</a>-->
     <div>
         <h1 class="text-warning text-center text-xl">There are <span class=""></span> seats remaining</h1>
     </div>
 
+    <div>
+        <form method="post" th:action="@{save}" class="text-align-center justify-items-center">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="">
+                    <label for="seatNum" class="text-white">Seat Code</label>
+                    <input class="form-control " id="seatNum" type="text" required name="seatNum">
+<!--                           th:value="${reservation.seatNumber}"-->
 
-        <div>
-            <form method="post" th:action="@{/save}" class="text-align-center justify-items-center">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="">
-                        <label for="seatNum" class="text-white">Seat Code</label>
-                        <input class="form-control " id="seatNum" type="text" required="true" name="seatNum"
-                               th:value="${reservation.seatNumber}">
-                        <span th:errors="${reservation.seatNumber}"></span>
-                    </div>
-                    <div class="">
-                        <label for="name" class="text-white">Customer Name</label>
-                        <input class="form-control" type="text" name="name" required="true" id="Rname"
-                               th:value="${reservation.name}">
-                        <span th:errors="${reservation.name}"></span>
-                    </div>
+<!--                    <span th:errors="${reservation.seatNumber}"></span>-->
                 </div>
+                <div class="">
+                    <label for="Rname" class="text-white">Customer Name</label>
+                    <input class="form-control" type="text" name="name" required id="Rname">
+<!--                           th:value="${reservation.name}"-->
 
-                <div>
-                    <label class="text-white">Transaction Date</label>
-                    <input class="form-control" type="date" required="true" name="date" th:value="${reservation.date}">
-                    <span th:errors="${reservation.date}"></span>
+<!--                    <span th:errors="${reservation.name}"></span>-->
                 </div>
-                <div class="justify-items-center">
-                    <button type="submit" class="btn-primary btn text-white justify" onClick={checkValid()} th:href="@{/save}">Reserve</button>
-                </div>
+            </div>
 
-            </form>
-        </div>
+            <div>
+                <label class="text-white">Transaction Date</label>
+                <input class="form-control" type="date" required name="date" >
+<!--                th:value="${reservation.date}"-->
+<!--                <span th:errors="${reservation.date}"></span>-->
+            </div>
+            <div class="justify-items-center">
+                <button type="submit" class="btn-primary btn text-white justify" onClick={checkValid()}
+                        th:href="@{/index}">Reserve
+                </button>
+            </div>
+
+        </form>
+    </div>
 
 </div>
 <div id="booking display" class="bg-gray-800 bottom-0">
