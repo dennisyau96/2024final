@@ -4,5 +4,10 @@ import org.example.dennis_300378786.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.ArrayList;
+
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
+
+
 }

@@ -27,6 +27,24 @@
             }
         }
     </style>
+    <script th:inline="javascript">
+        var u = [[${session.a}]];
+        if (u == 1) {
+            alert('One record added');
+        }
+    </script>
+    <script th:inline="javascript">
+        var u = [[${session.e}]];
+        if (u == 2) {
+            alert('One record edited');
+        }
+    </script>
+    <style>
+        .pre-scrollable{
+            height:500px;
+            overflow-y: scroll;
+        }
+    </style>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
@@ -87,53 +105,66 @@
     </div>
 
     <div>
-        <h1 class="text-warning text-center text-xl">There are <span></span> seats remaining</h1>
+        <h1 class="text-warning text-center text-xl">There are <span class=""></span> seats remaining</h1>
     </div>
 
-    <!--    <div>-->
-    <!--        <form method="post" th:action="@{save}">-->
-    <!--            <div>-->
-    <!--                <label>Name</label>-->
-    <!--                <input class="form-control" type="text" name="name"-->
-    <!--                       th:value="${reservation.seatNumber}">-->
-    <!--                <span th:errors="${reservation.seatNumber}"></span>-->
-    <!--            </div>-->
-    <!--            <div>-->
-    <!--                <label>Date of Birth</label>-->
-    <!--                <input class="form-control" type="date" name="dob"-->
-    <!--                       th:value="${reservation.name}">-->
-    <!--                <span th:errors="${reservation.name}"></span>-->
-    <!--            </div>-->
-    <!--            <div>-->
-    <!--                <label>Passed</label>-->
-    <!--                <input type="checkbox" name="passed" th:checked="${reservation.date}">-->
-    <!--                <span th:errors="${reservation.date}"></span>-->
-    <!--            </div>-->
 
-    <!--            <button type="submit" class="btn-primary" th:href="@{/index}" >Save</button>-->
-    <!--        </form>-->
-    <!--    </div>-->
+        <div>
+            <form method="post" th:action="@{/save}" class="text-align-center justify-items-center">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="">
+                        <label for="seatNum" class="text-white">Seat Code</label>
+                        <input class="form-control " id="seatNum" type="text" required="true" name="seatNum"
+                               th:value="${reservation.seatNumber}">
+                        <span th:errors="${reservation.seatNumber}"></span>
+                    </div>
+                    <div class="">
+                        <label for="name" class="text-white">Customer Name</label>
+                        <input class="form-control" type="text" name="name" required="true" id="Rname"
+                               th:value="${reservation.name}">
+                        <span th:errors="${reservation.name}"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-white">Transaction Date</label>
+                    <input class="form-control" type="date" required="true" name="date" th:value="${reservation.date}">
+                    <span th:errors="${reservation.date}"></span>
+                </div>
+                <div class="justify-items-center">
+                    <button type="submit" class="btn-primary btn text-white justify" onClick={checkValid()} th:href="@{/save}">Reserve</button>
+                </div>
+
+            </form>
+        </div>
 
 </div>
 <div id="booking display" class="bg-gray-800 bottom-0">
-    <table class="table text-white">
+    <table class="table text-white pre-scrollable">
         <thead>
         <th>Transaction Code</th>
         <th>Date</th>
         <th>Seat Number</th>
         <th>Name</th>
-        <th></th>
+        <th>
+
+        </th>
         <th></th>
 
         </thead>
         <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:each="r:${reservations}">>
+            <td th:text="${r.getId()}"></td>
+            <td th:text="${r.getDate()}"></td>
+            <td th:text="${r.getSeatNumber()}"></td>
+            <td th:text="${r.getName()}"></td>
+            <td><a class="btn btn-danger" onclick="return confirm('Do you want to delete the data?')"
+                   th:href="@{delete(id=${r.id})}">Delete</a></td>
+            <td>
+                <a class="btn btn-success" th:href="@{editReservation(id=${r.id})}">
+                    Edit</a>
+            </td>
+
         </tr>
 
         </tbody>
@@ -142,4 +173,18 @@
 
 </div>
 </body>
+<script>
+    function checkValid() {
+        var seat = document.getElementById("seatNum");
+        var name = document.getElementById("Rname");
+
+        if (seat.value === "" || seat.value == null) {
+            alert("Please provide seat number.");
+        } else if (name.value === "" || name.value == null) {
+            alert("Please provide your name.");
+
+        }
+    }
+
+</script>
 </html>

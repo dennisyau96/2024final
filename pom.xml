@@ -43,6 +43,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--        dependency injection -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -67,6 +68,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+<!--        dependency injection -->
+        <dependency>
+        <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>junit</groupId>-->
